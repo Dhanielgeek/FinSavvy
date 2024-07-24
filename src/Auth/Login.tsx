@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from "react";
-import Logo from "../assets/1-removebg-preview.png";
+import Logo from "../assets/fintrade.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
