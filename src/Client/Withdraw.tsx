@@ -1,7 +1,7 @@
 const Withdraw = () => {
   return (
-    <div className="w-full bg-[#101829] h-full overflow-y-scroll flex items-center flex-col px-10 phone:px-4 py-16 phone:flex phone:justify-center phone:items-center ">
-      <div className="w-1/2 phone:w-full h-max bg-white rounded px-20 phone:px-5 py-10 flex flex-col gap-5 items-center">
+    <div className="w-full bg-[#101829] h-full overflow-y-scroll flex items-center flex-col px-10 max-md:px-4 py-16 max-md:flex max-md:justify-center max-md:items-center ">
+      <div className="w-1/2 max-md:w-full h-max bg-white rounded px-20 max-md:px-5 py-10 flex flex-col gap-5 items-center">
         <p className="text-2xl font-semibold text-[rgb(54,74,99)] text-center phone:text-xl">
           Request New Withdrawal
         </p>

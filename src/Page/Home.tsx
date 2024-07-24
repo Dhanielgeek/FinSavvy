@@ -1,7 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const Navigate = useNavigate();
+
   const contexts = useMemo(
     () => [
       {
@@ -93,6 +96,7 @@ const Home = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
               className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+              onClick={() => Navigate("/login")}
             >
               {contexts[contextIndex].fourthText}
             </motion.button>

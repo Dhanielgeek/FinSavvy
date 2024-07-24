@@ -125,10 +125,10 @@ const Packages: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-full scrollbar overflow-y-scroll">
+    <div className="w-full h-full bg-[#101829] scrollbar overflow-y-scroll">
       <Toaster />
-      <div className="w-full h-[28%] flex justify-start items-center">
-        <div className="w-[30%] h-[80%] flex justify-center gap-4 flex-col items-start px-4 phone:w-[90%]">
+      <div className="w-full h-[28%] flex justify-start items-center max-md:h-[10%]">
+        <div className="w-[30%] h-[80%] flex justify-center gap-4  flex-col items-start px-4 max-md:w-[90%]">
           <p className="font-semibold text-2xl text-slate-100">
             Available Packages
           </p>
@@ -138,7 +138,7 @@ const Packages: React.FC = () => {
         {plans.map((plan, index) => (
           <div
             key={index}
-            className="w-[30%] h-[50%] bg-white shadow-lg rounded-md flex justify-around items-center flex-col mb-5 phone:w-[90%]"
+            className="w-[30%] h-[50%] bg-white shadow-lg rounded-md flex justify-around items-center flex-col mb-5 max-md:w-[90%]"
           >
             <div className="w-full h-[15%] flex justify-start px-5 items-center">
               <p className="text-2xl">{plan.name}</p>
