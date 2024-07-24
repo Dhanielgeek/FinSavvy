@@ -32,6 +32,7 @@ const TradingViewWidget: React.FC = () => {
           widgetContainerRef.current &&
           widgetContainerRef.current.contains(script)
         ) {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           widgetContainerRef.current.removeChild(script);
           scriptAppendedRef.current = false; // Reset the ref when the component unmounts
         }

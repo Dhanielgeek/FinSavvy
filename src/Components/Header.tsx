@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <div
-      className="w-full h-[17vh] bg-[#023E8A] flex justify-around flex-col items-center phone:h-[10vh] smallPhone:h-[13vh]"
+      className="w-full h-[17vh] bg-[#023E8A] flex justify-around flex-col items-center max-md:h-[15vh]"
       id="home"
     >
       <div className="w-full h-[30%] border-b-2 flex justify-center items-center">
@@ -30,14 +30,14 @@ const Header = () => {
           Start trading on FinSavy. Learn more
         </p>
       </div>
-      <div className="w-full h-[60%] flex justify-around px-2 items-center">
+      <div className="w-full h-[60%] flex justify-around px-5 items-center max-md:justify-between">
         <div
-          className="w-[10%] h-[100%] flex justify-center items-center"
+          className="w-[10%] h-[100%] flex justify-center items-center max-md:w-[30%]"
           onClick={() => navigate("/")}
         >
           <img src={Logo} alt="" className="w-[100%] h-[100%] object-contain" />
         </div>
-        <div className="w-[30%] h-[100%]  flex justify-around items-center phone:hidden">
+        <div className="w-[30%] h-[100%]  flex justify-around items-center max-md:hidden">
           <nav
             className="text-white font-semibold cursor-pointer"
             onClick={() => navigate("")}
@@ -62,7 +62,7 @@ const Header = () => {
             ABOUT US
           </nav>
         </div>
-        <div className="w-[20%] h-[100%] flex justify-around items-center phone:hidden">
+        <div className="w-[20%] h-[100%] flex justify-around items-center max-md:hidden">
           <button
             className="px-9 py-2 bg-[#968903] font-semibold text-white rounded-md"
             onClick={() => navigate("/register")}
@@ -76,22 +76,22 @@ const Header = () => {
             Login
           </button>
         </div>
-        <div className="w-[20%] h-[100%] relative hidden phone:flex justify-center items-center">
+        <div className="w-[20%] h-[100%] relative hidden max-md:flex justify-center items-center z-40">
           {Toggle ? (
             <MdOutlineClear
-              className="w-[70%] h-[70%] text-white cursor-pointer"
+              className="size-6 text-white cursor-pointer"
               onClick={HandleToggle}
             />
           ) : (
             <RiMenu3Fill
-              className="w-[70%] h-[70%] text-white cursor-pointer"
+              className="size-6 text-white cursor-pointer"
               onClick={HandleToggle}
             />
           )}
           <AnimatePresence>
             {Toggle && (
               <motion.div
-                className="HeaderMobileContainer absolute bg-[#050C1B] w-full top-[100%] left-0"
+                className="HeaderMobileContainer absolute bg-[#023E8A] w-[20rem] top-[106%]  right-1"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}

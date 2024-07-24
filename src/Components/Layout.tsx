@@ -31,7 +31,7 @@ const Arrow = () => {
   }, []);
 
   return (
-    <div className="fix-arrow fixed bottom-24 z-20 right-4 w-[50px] h-[50px] rounded-lg bg-blue-500 text-white flex justify-center items-center cursor-pointer">
+    <div className="fix-arrow fixed bottom-24 z-20 right-12 w-[50px] h-[50px] rounded-lg bg-blue-500 text-white flex justify-center items-center cursor-pointer">
       {!scroll ? (
         <Link to="footer" smooth={true} duration={1000} onClick={oNcLIck}>
           <FaArrowDown />
