@@ -1,10 +1,10 @@
-import Logo from "../assets/1-removebg-preview.png";
+import React, { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
-import { FormEvent, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Logo from "../assets/fintrade.png";
 
-const SignUp = () => {
+const SignUp: React.FC = () => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
@@ -58,6 +58,7 @@ const SignUp = () => {
         setConfirmPassword("");
       } catch (error) {
         console.error(error);
+        toast.error("An error occurred during signup");
       } finally {
         setLoading(false);
         toast.dismiss(toastLoading);
@@ -66,146 +67,146 @@ const SignUp = () => {
   };
 
   return (
-    <div className="w-full h-[55rem] flex justify-center bg-[#4B3BC6] items-center phone:h-[82rem]">
-      <div className="w-[60%] h-[80%] bg-slate-50 rounded-lg flex justify-center gap-5 items-start flex-col phone:w-[90%]">
-        <div className="w-[20%] h-[20%] flex justify-center items-center phone:w-[40%]">
-          <img src={Logo} alt="Logo" />
-        </div>
-        <div className="w-[50%] h-[12%] phone:w-[100%] flex justify-center items-start px-8 flex-col">
-          <h2 className="font-semibold text-4xl smallPhone:text-2xl">
+    <div className="min-h-screen bg-gradient-to-br from-[#4B3BC6] to-[#3A2F9E] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-2xl">
+        <div className="flex flex-col items-center">
+          <img className="h-20 w-auto" src={Logo} alt="Logo" />
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Create Account
           </h2>
-          <p className="text-lg phone:text-center text-gray-400">
+          <p className="mt-2 text-center text-sm text-gray-600">
             Register to continue with FinsTrading.com
           </p>
         </div>
-        <form
-          className="w-full h-[40%] bg-black flex flex-col justify-center items-center phone:flex-col gap-2 phone:h-[20.5%]"
-          onSubmit={handleSignup}
-        >
-          <div className="w-[50%] h-full px-5 flex justify-center items-start flex-col phone:w-full">
-            <label
-              htmlFor="firstName"
-              className="font-medium text-xl text-[#547177]"
-            >
-              First Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              placeholder="Your First Name"
-              className="w-full bg-transparent px-3 text-lg border-2 outline-none h-[70%] rounded-md"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </div>
-          <div className="w-[50%] h-full px-5 flex justify-center items-start flex-col phone:w-full">
-            <label
-              htmlFor="lastName"
-              className="font-medium text-xl text-[#547177]"
-            >
-              Last Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              placeholder="Your Last Name"
-              className="w-full bg-transparent px-3 text-lg border-2 outline-none h-[70%] rounded-md"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
-          <div className="w-[50%] h-full px-5 flex justify-center items-start flex-col phone:w-full">
-            <label
-              htmlFor="email"
-              className="font-medium text-xl text-[#547177]"
-            >
-              Email <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter Your Email Address"
-              className="w-full bg-transparent px-3 text-lg border-2 outline-none h-[70%] rounded-md"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="w-[50%] h-full px-5 flex justify-center items-start flex-col phone:w-full">
-            <label
-              htmlFor="userName"
-              className="font-medium text-xl text-[#547177]"
-            >
-              User Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              id="userName"
-              placeholder="Enter Your User Name"
-              className="w-full bg-transparent px-3 text-lg border-2 outline-none h-[70%] rounded-md"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-            />
-          </div>
-          <div className="w-[50%] h-full px-5 flex justify-center items-start flex-col phone:w-full">
-            <label
-              htmlFor="password"
-              className="font-medium text-xl text-[#547177]"
-            >
-              Password <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Enter Your Password"
-              className="w-full bg-transparent px-3 text-lg border-2 outline-none h-[70%] rounded-md"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <div className="w-[50%] h-full px-5 flex justify-center items-start flex-col phone:w-full">
-            <label
-              htmlFor="confirmPassword"
-              className="font-medium text-xl text-[#547177]"
-            >
-              Confirm Password <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              placeholder="Confirm Your Password"
-              className="w-full bg-transparent px-3 text-lg border-2 outline-none h-[70%] rounded-md"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-          </div>
-          <div className="w-full h-[28%]">
-            <div className="w-full h-[28%] flex justify-start px-7 gap-2 items-center">
-              <input type="checkbox" />
-              <p className="text-xl text-[#547177] smallPhone:text-sm">
-                I agree with{" "}
-                <span className="text-red-500">Privacy & Policy</span> and{" "}
-                <span className="text-red-500">Terms & Conditions</span>
-              </p>
+        <form className="mt-8 space-y-6" onSubmit={handleSignup}>
+          <div className="rounded-md shadow-sm -space-y-px">
+            <div>
+              <label htmlFor="firstName" className="sr-only">
+                First Name
+              </label>
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
             </div>
-            <div className="w-full h-[40%] flex justify-center items-center">
-              <button
-                className="w-[90%] h-[60%] bg-[#5270FC] rounded-full text-lg text-white"
-                type="submit"
-              >
-                {loading ? "LOADING" : "CREATE ACCOUNT"}
-              </button>
+            <div>
+              <label htmlFor="lastName" className="sr-only">
+                Last Name
+              </label>
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Last Name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
             </div>
-            <div className="w-full h-[23%] flex justify-center items-center">
-              <p className="text-xl text-[#547177]">
-                Already have an account?{" "}
-                <Link to="/login" className="text-red-500">
-                  Login
-                </Link>
-              </p>
+            <div>
+              <label htmlFor="email" className="sr-only">
+                Email address
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
+            <div>
+              <label htmlFor="userName" className="sr-only">
+                Username
+              </label>
+              <input
+                id="userName"
+                name="userName"
+                type="text"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Username"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="new-password"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="confirmPassword" className="sr-only">
+                Confirm Password
+              </label>
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                autoComplete="new-password"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center">
+            <input
+              id="terms"
+              name="terms"
+              type="checkbox"
+              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+            />
+            <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
+              I agree with the{" "}
+              <span className="text-indigo-600">Privacy Policy</span> and{" "}
+              <span className="text-indigo-600">Terms & Conditions</span>
+            </label>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              {loading ? "LOADING..." : "CREATE ACCOUNT"}
+            </button>
           </div>
         </form>
+
+        <div className="text-sm text-center">
+          <p className="font-medium text-indigo-600 hover:text-indigo-500">
+            Already have an account?{" "}
+            <Link to="/login" className="font-bold text-red-500">
+              Login
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

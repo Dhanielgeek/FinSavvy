@@ -27,7 +27,7 @@ const Header = () => {
           className="text-white smallPhone:text-sm"
           onClick={() => navigate("/login")}
         >
-          Start trading on FinSavy. Learn more
+          Start trading on FinTrading. Learn more
         </p>
       </div>
       <div className="w-full h-[60%] flex justify-around px-5 items-center max-md:justify-between">
@@ -65,7 +65,7 @@ const Header = () => {
         <div className="w-[20%] h-[100%] flex justify-around items-center max-md:hidden">
           <button
             className="px-9 py-2 bg-[#968903] font-semibold text-white rounded-md"
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/signup")}
           >
             Register
           </button>
