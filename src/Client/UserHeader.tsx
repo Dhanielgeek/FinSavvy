@@ -104,7 +104,7 @@ const UserHeader: React.FC<UserHedeprops> = ({ active, setActive }) => {
           Withdraw Funds
         </button>
       </div>
-      <div className="w-[37%] h-[100%] flex justify-center items-center max-md:w-[40%] max-md:justify-around">
+      <div className="w-[37%] h-[100%] flex justify-center items-center max-md:w-[50%] max-md:justify-around">
         <div className="w-[60%] h-[100%] flex justify-center gap-6 items-center max-md:w-[90%]">
           <div className="w-[40px] h-[40px] bg-slate-200 rounded-full flex justify-center items-center max-md:hidden">
             <FaRegBell className="text-2xl" />

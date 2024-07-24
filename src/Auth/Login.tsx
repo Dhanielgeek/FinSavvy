@@ -44,7 +44,7 @@ const Login: React.FC = () => {
     <div className="w-[100%] h-[45rem] bg-[#4B3BC6] flex justify-center items-center max-md:h-[60rem]">
       <div className="w-[35%] h-[80%] bg-slate-50 rounded-lg flex flex-col justify-center gap-2 items-center max-md:w-[90%]">
         <div className="w-[30%] h-[20%] flex justify-center items-center">
-          <img src={Logo} alt="Logo" />
+          <img src={Logo} alt="Logo" onClick={() => Navigate("/")} />
         </div>
         <div className="w-[100%] h-[14%] flex justify-center items-center flex-col">
           <h2 className="font-medium text-4xl">Welcome Back !</h2>
