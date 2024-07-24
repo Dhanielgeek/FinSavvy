@@ -1,25 +1,31 @@
 import React, { FormEvent, useState } from "react";
 import Logo from "../assets/fintrade.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { Userdata, userToken } from "../Global/Slice";
 
 const Login: React.FC = () => {
-  const [details, setDetails] = useState<string>("");
+  const [userNameOrEmail, setuserNameOrEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const data = { details, password };
-  const url = "https://fin-savy-application.vercel.app/api/v1/users/login";
+  const dispatch = useDispatch();
+  const Navigate = useNavigate();
+
+  const data = { userNameOrEmail, password };
+  const url = `${import.meta.env.VITE_DEVE_URL}/api/user/login`;
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     const toastLoading = toast.loading("Please wait...");
     try {
       const response = await axios.post(url, data);
-      console.log(response);
-
-      toast.success("Login successful!");
+      dispatch(Userdata(response.data.data));
+      dispatch(userToken(response.data.token));
+      toast.success("Login successful!", { duration: 4000 });
+      Navigate("/user/overview", { replace: true });
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         const errorMsg =
@@ -29,7 +35,7 @@ const Login: React.FC = () => {
         toast.error("Error occurred");
       }
     } finally {
-      setLoading(true);
+      setLoading(false);
       toast.dismiss(toastLoading);
     }
   };
@@ -46,22 +52,22 @@ const Login: React.FC = () => {
             Login to continue with FinsTrading.com user Panel
           </p>
         </div>
-        <div className="w-[85%] h-[14%]">
+        <div className="w-[85%] h-[14%] max-md:h-[12%]">
           <label
             htmlFor="details"
             className="text-xl font-medium text-[#454d4e]"
           >
-            Email or Username
+            Email or UserName
           </label>
           <input
             id="details"
             type="text"
-            placeholder="Your Email or Username"
+            placeholder="Your Email or UserName"
             className="w-[100%] bg-transparent px-3 text-lg border-2 outline-none h-[60%] rounded-md"
-            onChange={(e) => setDetails(e.target.value)}
+            onChange={(e) => setuserNameOrEmail(e.target.value)}
           />
         </div>
-        <div className="w-[85%] h-[14%]">
+        <div className="w-[85%] h-[14%]  max-md:h-[12%]">
           <label
             htmlFor="password"
             className="text-xl font-medium text-[#454d4e]"
@@ -91,6 +97,7 @@ const Login: React.FC = () => {
           <button
             className="w-[100%] h-[47%] bg-[#5270FC] rounded-full text-lg text-white"
             onClick={handleLogin}
+            disabled={loading}
           >
             {loading ? "Loading..." : "Account Login"}
           </button>

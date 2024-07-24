@@ -158,7 +158,7 @@ const Deposit = () => {
               <p className="font-semibold text-gray-300">Back</p>
             </div>
           </div>
-          <div className="Transaction w-[50%] h-[70%] bg-white flex-col flex justify-center items-center">
+          <div className="Transaction w-[50%] h-[70%] bg-white flex-col flex justify-center items-center max-md:w-[90%]">
             <div className="w-[100%] h-[20%] flex justify-around items-center flex-col">
               <p className="text-lg text-gray-500 font-medium">
                 Transaction Details
@@ -252,13 +252,13 @@ const Deposit = () => {
         </div>
       ) : (
         <>
-          <div className="texthold w-[100%] h-[10%] flex justify-center items-center">
+          <div className="texthold w-[100%] h-[10%] flex justify-center items-center ">
             <p className="text-3xl text-slate-400 font-bold">
               Fund Your Account
             </p>
           </div>
           <div className="w-[100%] h-[80%] flex justify-center flex-col items-center">
-            <div className="DepoistAmount w-[40%] h-[40%] flex justify-center gap-3 flex-col items-start">
+            <div className="DepoistAmount w-[40%] h-[40%] flex justify-center gap-3 flex-col items-start max-md:w-[90%] max-md:h-[30%]">
               <label htmlFor="" className="text-lg font-semibold text-gray-300">
                 Amount to Deposit
               </label>
@@ -270,15 +270,15 @@ const Deposit = () => {
                 className="w-[100%] h-[40%] bg-transparent text-gray-200 border-2 border-slate-400 rounded-lg px-5 outline-none"
               />
             </div>
-            <div className="depositHolder w-[40%] h-[80%] flex justify-around items-center flex-col">
-              <div className="w-[100%] h-[10%] flex justify-start items-center">
+            <div className="depositHolder w-[40%] h-[80%] flex justify-around items-center flex-col max-md:w-[80%] max-md:h-[65%]">
+              <div className="w-[100%] h-[10%] flex justify-start  items-center">
                 <p className="text-gray-300 font-semibold">
                   Choose Payment Method
                 </p>
               </div>
-              <div className="w-[100%] h-[50%] flex justify-around items-center">
+              <div className="w-[100%] h-[50%] flex justify-around items-center  max-md:h-[40%]">
                 <div
-                  className={`w-[40%] h-[60%] flex flex-col justify-around items-center cursor-pointer ${
+                  className={`w-[40%] h-[60%] flex flex-col justify-around items-center cursor-pointer max-md:h-[40%] ${
                     selectedPaymentMethod === "btc"
                       ? "border-4 border-[#FFA500]"
                       : "border-2 border-slate-400"
@@ -289,7 +289,7 @@ const Deposit = () => {
                   <p className="text-lg text-gray-300">Bitcoin</p>
                 </div>
                 <div
-                  className={`w-[40%] h-[60%] flex flex-col justify-around items-center cursor-pointer ${
+                  className={`w-[40%] h-[60%] flex flex-col justify-around items-center cursor-pointer max-md:h-[40%] ${
                     selectedPaymentMethod === "eth"
                       ? "border-4 border-[#FFA500]"
                       : "border-2 border-slate-400"
@@ -302,7 +302,7 @@ const Deposit = () => {
               </div>
               <div className="w-[100%] h-[26%] flex justify-center items-center">
                 <button
-                  className="w-[90%] h-[70%] bg-[#050C1B] text-gray-200 font-semibold rounded-md"
+                  className="w-[90%] h-[70%] bg-[#050C1B] text-gray-200 font-semibold rounded-md max-md:h-[50%]"
                   onClick={handleProceedToPayment}
                 >
                   Proceed to Payment

@@ -1,5 +1,5 @@
 import React, { FormEvent, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Logo from "../assets/fintrade.png";
@@ -22,6 +22,8 @@ const SignUp: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [countries, setCountries] = useState<Country[]>([]);
 
+  const Navigate = useNavigate();
+
   useEffect(() => {
     const fetchCountries = async () => {
       try {
@@ -38,7 +40,7 @@ const SignUp: React.FC = () => {
     fetchCountries();
   }, []);
 
-  const url = "https://fin-savy-application.onrender.com/api/v1/users/signup";
+  const url = `${import.meta.env.VITE_DEVE_URL}/api/user/signup`;
   const data = {
     firstName,
     lastName,
@@ -87,6 +89,7 @@ const SignUp: React.FC = () => {
         setCountry("");
         setPassword("");
         setConfirmPassword("");
+        Navigate("/review");
       } catch (error) {
         console.error(error);
         toast.error("An error occurred during signup");
