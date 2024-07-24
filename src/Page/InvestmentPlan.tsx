@@ -24,10 +24,10 @@ const InvestmentPlan = () => {
   };
 
   return (
-    <div className="  w-[100%] h-[57rem] flex justify-around items-center flex-col phone:h-auto">
-      <div className="w-[100%] h-[20%] phone:h-[8rem] flex justify-around items-center flex-col  phone:w-[90%]">
+    <div className="  w-[100%] h-[57rem] flex justify-around items-center flex-col max-md:h-auto">
+      <div className="w-[100%] h-[20%] max-md:h-[8rem] flex justify-around items-center flex-col  max-md:w-[90%]">
         <motion.div
-          className="w-[20%] phone:w-[80%] phone:h-[50%] h-[30%] text-white font-bold text-xl justify-center items-center flex rounded-lg bg-yellow-500"
+          className="w-[20%] max-md:w-[80%] max-md:h-[50%] h-[30%] text-white font-bold text-xl justify-center items-center flex rounded-lg bg-yellow-500"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -35,7 +35,7 @@ const InvestmentPlan = () => {
           OUR INVESTMENT PLAN
         </motion.div>
         <motion.p
-          className="font-extrabold text-blue-500 text-5xl text-center phone:text-xl"
+          className="font-extrabold text-blue-500 text-5xl text-center max-md:text-xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -54,10 +54,10 @@ const InvestmentPlan = () => {
             whileHover={{ scale: 1.1 }}
           >
             <div className="w-[100%] h-[24%] flex justify-center items-center flex-col">
-              <p className="text-white font-semibold text-[4vh] phone:text-[3.2vh]">
+              <p className="text-white font-semibold text-[4vh] max-md:text-[3.2vh]">
                 {plan.plan}
               </p>
-              <p className="text-orange-400 text-[3vh] phone:text-[2.5vh]">
+              <p className="text-orange-400 text-[3vh] max-md:text-[2.5vh]">
                 {plan.daily}
               </p>
             </div>

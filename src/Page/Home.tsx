@@ -1,9 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
-import { motion } from "framer-motion";
-import TradingViewWidgettwo from "../Components/Tradingwidget";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Home = () => {
-  const Context = useMemo(
+  const contexts = useMemo(
     () => [
       {
         firstText: "THINK IN INVESTMENT",
@@ -31,82 +30,74 @@ const Home = () => {
   );
 
   const [contextIndex, setContextIndex] = useState(0);
-  const [currentSecondText, setCurrentSecondText] = useState("");
-  const [currentThirdText, setCurrentThirdText] = useState("");
-  const [currentFourthText, setCurrentFourthText] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setContextIndex((prevIndex) => (prevIndex + 1) % Context.length);
+      setContextIndex((prevIndex) => (prevIndex + 1) % contexts.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [Context]);
-
-  useEffect(() => {
-    const secondTextAnimationInterval = setInterval(() => {
-      const textToAnimate = Context[contextIndex].secondText;
-      setCurrentSecondText(
-        textToAnimate.slice(0, currentSecondText.length + 1)
-      );
-    }, 50);
-
-    return () => clearInterval(secondTextAnimationInterval);
-  }, [contextIndex, currentSecondText, Context]);
-
-  useEffect(() => {
-    const thirdTextAnimationInterval = setInterval(() => {
-      const textToAnimate = Context[contextIndex].thirdText;
-      setCurrentThirdText(textToAnimate.slice(0, currentThirdText.length + 1));
-    }, 50);
-
-    return () => clearInterval(thirdTextAnimationInterval);
-  }, [contextIndex, currentThirdText, Context]);
-
-  useEffect(() => {
-    const fourthTextAnimationInterval = setInterval(() => {
-      const textToAnimate = Context[contextIndex].fourthText;
-      setCurrentFourthText(
-        textToAnimate.slice(0, currentFourthText.length + 1)
-      );
-    }, 50);
-
-    return () => clearInterval(fourthTextAnimationInterval);
-  }, [contextIndex, currentFourthText, Context]);
+  }, [contexts]);
 
   return (
     <div
-      className="Home w-[100%] h-[90vh] flex justify-around flex-col relative items-center smallPhone:h-[100vh]"
+      className="Home bg-gradient-to-r from-gray-900 to-black h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
       id="home"
     >
-      <div className="w-[85%] h-[70%] hold phone:w-[90%] phone:h-[55%]  MediumPhone:h-[60%] smallPhone:h-[100%]">
-        <div className="w-[40%] h-[100%] flex justify-around items-start flex-col phone:w-[100%] ">
-          <div className="w-[100%] h-[10%]  flex justify-start items-center">
-            <h2 className="text-white">{Context[contextIndex].firstText}</h2>
-          </div>
-          <div className="w-[100%] h-[40%] flex justify-start items-center">
-            <h2 className="font-semibold text-6xl text-white phone:text-6xl smallPhone:text-[1.3rem] MediumPhone:text-[2.5rem]">
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-              >
-                {currentSecondText}
-              </motion.span>
-            </h2>
-          </div>
-          <div className="w-[100%] h-[14%]  flex justify-start items-center">
-            <p className="text-white">{currentThirdText}</p>
-          </div>
-          <div className="w-[100%] h-[15%] flex justify-start items-center">
-            <button className="w-[30%] h-[67%] rounded-md bg-[#4B3BC6] text-white">
-              {currentFourthText}
-            </button>
-          </div>
+      <div className="max-w-4xl w-full">
+        <div className="text-center">
+          <AnimatePresence mode="wait">
+            <motion.h2
+              key={`first-${contextIndex}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="text-xl font-semibold text-indigo-400 mb-4"
+            >
+              {contexts[contextIndex].firstText}
+            </motion.h2>
+          </AnimatePresence>
+
+          <AnimatePresence mode="wait">
+            <motion.h1
+              key={`second-${contextIndex}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6"
+            >
+              {contexts[contextIndex].secondText}
+            </motion.h1>
+          </AnimatePresence>
+
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={`third-${contextIndex}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-xl text-gray-300 mb-8"
+            >
+              {contexts[contextIndex].thirdText}
+            </motion.p>
+          </AnimatePresence>
+
+          <AnimatePresence mode="wait">
+            <motion.button
+              key={`fourth-${contextIndex}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+            >
+              {contexts[contextIndex].fourthText}
+            </motion.button>
+          </AnimatePresence>
         </div>
-      </div>
-      <div className=" w-full h-[70px] absolute top-[30.4rem]">
-        <TradingViewWidgettwo />
       </div>
     </div>
   );

@@ -45,12 +45,12 @@ const StarRating = ({ rating }: { rating: number }) => {
 
 const Testimonials = () => {
   return (
-    <div className="w-full h-[45rem] mt-3 flex justify-around items-center flex-col phone:h-auto">
+    <div className="w-full h-[45rem] mt-3 flex justify-around items-center flex-col max-md:h-auto">
       <div className="w-full h-[20%] flex justify-around flex-col items-center">
         <p className="text-3xl font-bold text-center">
           INVESTORS <span className="text-blue-500">TESTIMONIALS</span>
         </p>
-        <div className="w-[40%] h-[50%] text-gray-400 phone:w-[80%]">
+        <div className="w-[40%] h-[50%] text-gray-400 max-md:w-[80%]">
           <p className="text-center">
             Here are a few words from our most trusted investors. These words
             are like guides to us, and they help weave our deep legal and

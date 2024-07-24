@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, memo } from "react";
 
+// eslint-disable-next-line react-refresh/only-export-components
 const TradingViewForexCrossRates: React.FC = () => {
   const container = useRef<HTMLDivElement>(null);
 
@@ -46,6 +47,7 @@ const TradingViewForexCrossRates: React.FC = () => {
     return () => {
       // Clean up the script when the component unmounts or re-renders
       if (container.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         container.current.innerHTML = "";
       }
     };
@@ -70,4 +72,5 @@ const TradingViewForexCrossRates: React.FC = () => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default memo(TradingViewForexCrossRates);

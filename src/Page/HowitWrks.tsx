@@ -77,17 +77,17 @@ const HowitWrks = () => {
           y: 0,
         }}
         viewport={{ once: true }}
-        className="w-full py-10 px-14 flex flex-col items-center gap-5 phone:px-10 "
+        className="w-full py-10 px-14 flex flex-col items-center gap-5 max-md:px-10 "
       >
-        <p className="text-xl font-medium bg-orange-400 p-4 rounded-md text-white phone:text-sm ">
+        <p className="text-xl font-medium bg-orange-400 p-4 rounded-md text-white max-md:text-sm ">
           HOW IT WORKS
         </p>
-        <h1 className="text-5xl font-bold text-blue-500 text-center leading-[65px] phone:text-3xl ">
+        <h1 className="text-5xl font-bold text-blue-500 text-center leading-[65px] max-md:text-3xl ">
           What do you need to start?
         </h1>
-        <div className="w-full flex flex-wrap gap-9 phone:flex-col py-10 ">
+        <div className="w-full flex flex-wrap gap-9 max-md:flex-col py-10 ">
           {theWorks.map((e) => (
-            <div className="w-[23%] flex flex-col items-center gap-3 phone:w-full transition-all ease-in-out hover:scale-110 ">
+            <div className="w-[23%] flex flex-col items-center gap-3 max-md:w-full transition-all ease-in-out hover:scale-110 ">
               <div className="w-32 h-32 bg-blue-400 rounded-md relative flex justify-center items-center text-white ">
                 {e.img}
                 <div className="w-10 h-10 rounded-3xl bg-orange-400 absolute top-[-10px] left-[-10px] flex items-center justify-center ">
