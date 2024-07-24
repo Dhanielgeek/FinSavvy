@@ -1,17 +1,42 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Logo from "../assets/fintrade.png";
+
+interface Country {
+  name: {
+    common: string;
+  };
+}
 
 const SignUp: React.FC = () => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [country, setCountry] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [countries, setCountries] = useState<Country[]>([]);
+
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        const response = await fetch("https://restcountries.com/v3.1/all");
+        const data = await response.json();
+        const sortedCountries = data.sort((a: Country, b: Country) =>
+          a.name.common.localeCompare(b.name.common)
+        );
+        setCountries(sortedCountries);
+      } catch (error) {
+        console.error("Error fetching countries:", error);
+      }
+    };
+    fetchCountries();
+  }, []);
 
   const url = "https://fin-savy-application.onrender.com/api/v1/users/signup";
   const data = {
@@ -19,6 +44,8 @@ const SignUp: React.FC = () => {
     lastName,
     userName,
     email,
+    phoneNumber,
+    country,
     password,
     confirmPassword,
   };
@@ -37,6 +64,8 @@ const SignUp: React.FC = () => {
       !userName ||
       !lastName ||
       !email ||
+      !phoneNumber ||
+      !country ||
       !password ||
       !confirmPassword
     ) {
@@ -54,6 +83,8 @@ const SignUp: React.FC = () => {
         setLastName("");
         setUserName("");
         setEmail("");
+        setPhoneNumber("");
+        setCountry("");
         setPassword("");
         setConfirmPassword("");
       } catch (error) {
@@ -79,7 +110,7 @@ const SignUp: React.FC = () => {
           </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSignup}>
-          <div className="rounded-md shadow-sm -space-y-px">
+          <div className="rounded-md shadow-sm space-y-5">
             <div>
               <label htmlFor="firstName" className="sr-only">
                 First Name
@@ -140,6 +171,43 @@ const SignUp: React.FC = () => {
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
               />
+            </div>
+            <div>
+              <label htmlFor="phoneNumber" className="sr-only">
+                Phone Number
+              </label>
+              <input
+                id="phoneNumber"
+                name="phoneNumber"
+                type="text"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Phone Number"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="country" className="sr-only">
+                Country
+              </label>
+              <select
+                id="country"
+                name="country"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+              >
+                <option value="" disabled>
+                  Select your country
+                </option>
+                {countries.map((country) => (
+                  <option key={country.name.common} value={country.name.common}>
+                    {country.name.common}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <label htmlFor="password" className="sr-only">
