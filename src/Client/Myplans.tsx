@@ -53,7 +53,7 @@ const Myplans: React.FC = () => {
   return (
     <>
       <Toaster />
-      <div className="w-full h-[100vh] scrollbar-thin overflow-y-scroll">
+      <div className="w-full h-[100vh] scrollbar-thin scrollbar-hide overflow-y-scroll">
         <div className="w-full h-max flex flex-col px-10 phone:px-4 py-8 gap-3">
           {myPlans && myPlans.length > 0 ? (
             <>

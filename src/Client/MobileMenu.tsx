@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Drawer, Button } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
-import Logo from "../assets/skyBig.png";
+import Logo from "../assets/fintrade.png";
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiAccountPinCircleFill } from "react-icons/ri";
 import { MdHistory } from "react-icons/md";

@@ -71,16 +71,16 @@ const Overview = () => {
   ];
 
   return (
-    <div className="w-[100%] h-[100%] bg-[#101829] scrollbar-thin overflow-y-scroll">
-      <div className="welcome w-[100%] h-[12%] flex justify-start px-7 items-center">
-        <p className="text-xl font-medium phone:text-2xl text-slate-300">
+    <div className="w-[100%] h-[100%] bg-[#101829] scrollbar-thin scrollbar-hide overflow-y-scroll">
+      <div className="welcome w-[100%] h-[12%] max-md:h-[10%] flex justify-start px-7 items-center">
+        <p className="text-xl font-medium max-md:text-2xl text-slate-300">
           Welcome, {user?.firstName} {user?.lastName} !
         </p>
       </div>
       <div className="CardHolder w-[100%] h-[45%] flex justify-around flex-wrap items-center">
         {CardContent.map((item) => (
           <div
-            className="card w-[21%] h-[35%] bg-white rounded-md flex justify-center items-center flex-col"
+            className="card w-[21%] h-[35%] bg-white rounded-md flex justify-center items-center flex-col max-md:w-[45%] max-md:h-[20%]"
             key={item.id}
           >
             <div className="w-[90%] h-[70%] flex justify-center items-center">
