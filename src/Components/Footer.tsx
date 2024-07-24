@@ -18,7 +18,7 @@ const Footer = () => {
               href="mailto:defiskyspace@gmail.com"
               className="text-gray-400 hover:text-white transition-colors"
             >
-              defiskyspace@gmail.com
+              Fintrading@gmail.com
             </a>
           </div>
         </div>
@@ -99,7 +99,7 @@ const Footer = () => {
       {/* Footer Bottom */}
       <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
         <p className="text-sm text-gray-400 mb-4 md:mb-0">
-          &copy; {new Date().getFullYear()} DEFI SKY-SPACE. All rights reserved.
+          &copy; {new Date().getFullYear()} FinTrading. All rights reserved.
         </p>
         <div className="flex space-x-4">
           <BsFacebook className="w-6 h-6 text-gray-400 hover:text-white transition-colors cursor-pointer" />
