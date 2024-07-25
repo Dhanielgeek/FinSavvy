@@ -29,7 +29,9 @@ const UserDetails = () => {
   const { _id } = useParams<{ _id: string }>();
 
   const verifyUser = async () => {
-    const verifyUrl = `https://sk-yzt3.onrender.com/api/admin/verifyUser/${_id}`;
+    const verifyUrl = `${
+      import.meta.env.VITE_DEVE_URL
+    }/api/admin/verifyUser/${_id}`;
     const headers = {
       Authorization: `Bearer ${userToken}`,
     };
@@ -44,7 +46,9 @@ const UserDetails = () => {
   };
 
   const unsuspendUser = async () => {
-    const unsuspendUrl = `https://sk-yzt3.onrender.com/api/admin/unsuspendUser/${_id}`;
+    const unsuspendUrl = `${
+      import.meta.env.VITE_DEVE_URL
+    }/api/admin/unsuspendUser/${_id}`;
     const headers = {
       Authorization: `Bearer ${userToken}`,
     };
@@ -58,7 +62,9 @@ const UserDetails = () => {
   };
 
   const suspendUser = async () => {
-    const suspendUrl = `https://sk-yzt3.onrender.com/api/admin/suspendUser/${_id}`;
+    const suspendUrl = `${
+      import.meta.env.VITE_DEVE_URL
+    }/api/admin/suspendUser/${_id}`;
     const headers = {
       Authorization: `Bearer ${userToken}`,
     };
@@ -72,7 +78,9 @@ const UserDetails = () => {
   };
 
   const deleteUser = async () => {
-    const deleteUrl = `https://sk-yzt3.onrender.com/api/admin/deleteOneUser/${_id}`;
+    const deleteUrl = `${
+      import.meta.env.VITE_DEVE_URL
+    }/api/admin/deleteOneUser/${_id}`;
     const headers = {
       Authorization: `Bearer ${userToken}`,
     };
@@ -88,7 +96,7 @@ const UserDetails = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const url = `https://sk-yzt3.onrender.com/api/admin/getOne/${_id}`;
+      const url = `${import.meta.env.VITE_DEVE_URL}/api/admin/getOne/${_id}`;
       const headers = {
         Authorization: `Bearer ${userToken}`,
       };
@@ -173,13 +181,13 @@ const UserDetails = () => {
             Back
           </button>
           <button
-            className="w-[28%] h-[85%] flex justify-center rounded-md text-white items-center gap-1 bg-blue-500"
+            className=" py-2 px-6 flex justify-center rounded-md text-white items-center gap-1 bg-blue-500"
             onClick={toggleDropdown}
           >
             Actions <FaCaretDown />
           </button>
           {isDropdownOpen && (
-            <div className="absolute top-12 left-40 w-40 bg-white shadow-md rounded-md z-10">
+            <div className="absolute top-12 left-8 w-40 bg-white shadow-md rounded-md z-10">
               <ul className="flex flex-col">
                 {oneUser.status === "suspended" ? (
                   <li
@@ -322,7 +330,7 @@ const UserDetails = () => {
               <input
                 type="text"
                 className="border p-2 rounded-md"
-                value={oneUser.phone}
+                value={oneUser.phoneNumber}
                 readOnly
               />
             </div>
@@ -331,7 +339,7 @@ const UserDetails = () => {
               <input
                 type="text"
                 className="border p-2 rounded-md"
-                value={oneUser.nationality}
+                value={oneUser.country}
                 readOnly
               />
             </div>

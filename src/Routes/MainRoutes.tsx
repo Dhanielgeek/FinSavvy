@@ -13,7 +13,6 @@ import Myplans from "../Client/Myplans";
 import Packages from "../Client/Packages";
 import Deposit from "../Client/Deposit";
 import WelcomeAdmin from "../Admin/WelcomeAdmin";
-import Admin from "../Admin/Admin";
 import AllUsers from "../Admin/Allusers";
 import InvestmentPack from "../Admin/InvestmentPack";
 import UserDetails from "../Admin/UserDetails";
@@ -21,6 +20,13 @@ import Setting from "../Admin/Setting";
 import AdminDeposit from "../Admin/AdminDeposit";
 import AdminHome from "../Admin/AdminHome";
 import AdminWithdraw from "../Admin/AdminWithdraw";
+import Adminlayout from "../Layouts/Adminlayouts";
+import History from "../Client/History";
+import Account from "../Client/Account/Account";
+import Profile from "../Client/Account/Profile";
+import Security from "../Client/Account/Security";
+import AdminPri from "./AdminPri";
+import UserPri from "./UserPri";
 
 export const MainRoutes = createBrowserRouter([
   {
@@ -54,28 +60,51 @@ export const MainRoutes = createBrowserRouter([
     ],
   },
   {
-    path: "user",
-    element: <Dashboardlayout />,
+    element: <UserPri />,
     children: [
       {
-        path: "overview",
-        element: <Overview />,
-      },
-      {
-        path: "withdraw",
-        element: <Withdraw />,
-      },
-      {
-        path: "my-plans",
-        element: <Myplans />,
-      },
-      {
-        path: "packages",
-        element: <Packages />,
-      },
-      {
-        path: "deposit",
-        element: <Deposit />,
+        path: "user",
+        element: <Dashboardlayout />,
+        children: [
+          {
+            path: "overview",
+            element: <Overview />,
+          },
+          {
+            path: "withdraw",
+            element: <Withdraw />,
+          },
+          {
+            path: "my-plans",
+            element: <Myplans />,
+          },
+          {
+            path: "packages",
+            element: <Packages />,
+          },
+          {
+            path: "deposit",
+            element: <Deposit />,
+          },
+          {
+            path: "history",
+            element: <History />,
+          },
+          {
+            path: "account",
+            element: <Account />,
+            children: [
+              {
+                path: "profile",
+                element: <Profile />,
+              },
+              {
+                path: "security",
+                element: <Security />,
+              },
+            ],
+          },
+        ],
       },
     ],
   },
@@ -84,36 +113,41 @@ export const MainRoutes = createBrowserRouter([
     element: <WelcomeAdmin />,
   },
   {
-    path: "admin",
-    element: <Admin />,
+    element: <AdminPri />,
     children: [
       {
-        path: "adminhome",
-        element: <AdminHome />,
-      },
-      {
-        path: "allusers",
-        element: <AllUsers />,
-      },
-      {
-        path: "admindeposit",
-        element: <AdminDeposit />,
-      },
-      {
-        path: "adminwithdraw",
-        element: <AdminWithdraw />,
-      },
-      {
-        path: "packs",
-        element: <InvestmentPack />,
-      },
-      {
-        path: "userdetails/:_id",
-        element: <UserDetails />,
-      },
-      {
-        path: "settings",
-        element: <Setting />,
+        path: "admin",
+        element: <Adminlayout />,
+        children: [
+          {
+            path: "adminhome",
+            element: <AdminHome />,
+          },
+          {
+            path: "allusers",
+            element: <AllUsers />,
+          },
+          {
+            path: "admindeposit",
+            element: <AdminDeposit />,
+          },
+          {
+            path: "adminwithdraw",
+            element: <AdminWithdraw />,
+          },
+          {
+            path: "packs",
+            element: <InvestmentPack />,
+          },
+          {
+            path: "userdetails/:_id",
+            element: <UserDetails />,
+          },
+          {
+            path: "settings",
+            element: <Setting />,
+          },
+        ],
       },
     ],
   },

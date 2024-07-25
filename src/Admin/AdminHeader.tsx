@@ -5,12 +5,18 @@ import { PiSignOut, PiGearSix } from "react-icons/pi";
 import { FaCircleUser } from "react-icons/fa6";
 import { AiOutlineUser } from "react-icons/ai";
 import { motion, AnimatePresence } from "framer-motion";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUser } from "../Global/Slice"; // Adjust the import path according to your project structure
-import AdminMobile from "./AdminMobile";
+import { MdOutlineMenu } from "react-icons/md";
 
-const AdminHeader: React.FC = () => {
+interface UserHedeprops {
+  active: boolean;
+  setActive: (active: boolean) => void;
+}
+
+const UserHeader: React.FC<UserHedeprops> = ({ active, setActive }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [userImage, setUserImage] = useState<string | null>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -55,6 +61,11 @@ const AdminHeader: React.FC = () => {
     navigate("/login");
   };
 
+  const handleMenubar = () => {
+    setActive(!active);
+    // console.log(active);
+  };
+
   const menuItems = [
     {
       label: "My Profile",
@@ -64,33 +75,43 @@ const AdminHeader: React.FC = () => {
     {
       label: "Settings",
       icon: <PiGearSix className="text-2xl" />,
-      path: "/admin/settings",
+      path: "account/security",
     },
     {
       label: "Notifications",
       icon: <FaRegBell className="text-2xl" />,
-      path: "/admin/settings",
+      path: "/user/overview",
       mobileOnly: true,
     },
   ];
 
   return (
-    <div className="w-[100%] h-[12%] bg-white border-gray-100 border-b-2 flex justify-end phone:justify-between phone:h-[10%]">
-      <div className="w-[20%] h-[100%] hidden justify-center items-center phone:flex relative">
-        <AdminMobile />
+    <div className="w-[100%] h-[12%] bg-[#ffff] border-gray-100 border-b-2 justify-between flex max-md:h-[10%] max-md:px-7">
+      <div className="menu_bar w-[20%] h-[90%]">
+        <MdOutlineMenu className=" text-4xl" onClick={handleMenubar} />
       </div>
-      {/* <div className="w-[30%] h-[100%] flex justify-around items-center phone:hidden">
-        <button className="w-[40%] h-[57%] bg-yellow-500 rounded-md text-white">Fund Account</button>
-        <button className="w-[40%] h-[57%] bg-red-500 rounded-md text-white">Withdraw Funds</button>
-      </div> */}
-      <div className="w-[37%] h-[100%] flex justify-center items-center phone:w-[36%] phone:justify-around">
-        <div className="w-[60%] h-[100%] flex justify-center gap-6 items-center phone:w-[90%]">
-          <div className="w-[40px] h-[40px] bg-slate-200 rounded-full flex justify-center items-center phone:hidden">
+      <div className="w-[30%] h-[100%] flex justify-around items-center max-md:hidden">
+        <button
+          className="w-[40%] h-[57%] bg-yellow-500 rounded-md text-white"
+          onClick={() => navigate("/user/deposit")}
+        >
+          Fund Account
+        </button>
+        <button
+          className="w-[40%] h-[57%] bg-red-500 rounded-md text-white"
+          onClick={() => navigate("/user/withdraw")}
+        >
+          Withdraw Funds
+        </button>
+      </div>
+      <div className="w-[37%] h-[100%] flex justify-center items-center max-md:w-[50%] max-md:justify-around">
+        <div className="w-[60%] h-[100%] flex justify-center gap-6 items-center max-md:w-[90%]">
+          <div className="w-[40px] h-[40px] bg-slate-200 rounded-full flex justify-center items-center max-md:hidden">
             <FaRegBell className="text-2xl" />
           </div>
-          <div className="w-[60%] h-[50%] flex justify-around items-center phone:w-[80%]">
+          <div className="w-[60%] h-[50%] flex justify-around items-center max-md:w-[80%]">
             <div
-              className="w-[40px] h-[40px] bg-slate-300 border rounded-full flex justify-center items-center cursor-pointer phone:w-[50px] phone:h-[50px] smallPhone:w-[30px] smallPhone:h-[30px]"
+              className="w-[40px] h-[40px] bg-slate-300 border rounded-full flex justify-center items-center cursor-pointer max-md:w-[50px] max-md:h-[50px]"
               onClick={handleUserIconClick}
             >
               {userImage ? (
@@ -121,7 +142,7 @@ const AdminHeader: React.FC = () => {
               <AnimatePresence>
                 {showMenu && (
                   <motion.div
-                    className="dropDown-dashboard w-[15rem] h-[13rem] z-10 flex justify-around items-start px-4 flex-col bg-white shadow-md absolute top-11 right-[-20%]"
+                    className="dropDown-dashboard w-[15rem] h-[13rem] flex justify-around items-start px-4 flex-col bg-white shadow-md absolute top-11 right-[-20%]"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
@@ -168,4 +189,4 @@ const AdminHeader: React.FC = () => {
   );
 };
 
-export default AdminHeader;
+export default UserHeader;

@@ -11,8 +11,8 @@ export interface UserData {
   lastName: string;
   userName: string;
   email: string;
-  phone: string;
-  nationality: string;
+  phoneNumber: string;
+  country: string;
   accountBalance: number;
   totalProfit: number;
   totalDeposit: number;

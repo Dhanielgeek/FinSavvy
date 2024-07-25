@@ -59,7 +59,9 @@ const CreditDebitModal: React.FC<CreditDebitModalProps> = ({
     const toastLoadingId = toast.loading("Please wait...");
     setCreditLoading(true);
     try {
-      const url = `https://sk-yzt3.onrender.com/api/admin/creditOrDebit/${_id}`;
+      const url = `${
+        import.meta.env.VITE_DEVE_URL
+      }/api/admin/creditOrDebit/${_id}`;
       const token = userToken;
       const headers = {
         Authorization: `Bearer ${token}`,

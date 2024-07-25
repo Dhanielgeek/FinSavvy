@@ -80,12 +80,12 @@ const AdminHome = () => {
 
   return (
     <div className="w-full h-[100%] bg-slate-100 scrollbar-thin overflow-y-scroll">
-      <div className="AdminWel w-full h-[25%] flex justify-between items-center">
+      <div className="AdminWel w-full h-[25%] flex justify-between items-center max-md:h-[10%]">
         <div className="AdminTex w-[30%] h-full px-5 flex justify-center flex-col items-start">
           <p className="text-2xl">Dashboard</p>
           <p>Welcome, Super Admin!</p>
         </div>
-        <div className="ActionBtns w-[35%] h-full flex justify-around items-center">
+        <div className="ActionBtns w-[35%] h-full flex justify-around items-center max-md:hidden">
           <button
             className="w-32 h-[2.7rem] text-white rounded-md transition-all duration-300 hover:bg-green-500 bg-green-400"
             onClick={() => Navigate("/admin/admindeposit")}
@@ -106,18 +106,18 @@ const AdminHome = () => {
           </button>
         </div>
       </div>
-      <div className="AdminOverview w-full h-[13rem] flex flex-wrap justify-around items-center">
+      <div className="AdminOverview w-full h-[13rem] flex flex-wrap justify-around items-center max-md:h-[45rem]">
         {dataInfo.map((data) => (
           <div
             key={data.id}
-            className="w-[23%] h-[42%] bg-white rounded-md flex justify-center items-center m-2 phone:w-[100%] phone:h-[13%]"
+            className="w-[23%] h-[42%] bg-white rounded-md flex justify-center items-center m-2 max-md:w-[100%] max-md:h-[13%]"
           >
             <div
               className={`w-[50px] h-[50px] ${data.bgColor} rounded-full flex justify-center items-center`}
             >
               {data.icon}
             </div>
-            <div className="insideCard w-[60%] h-full flex gap-2 justify-center flex-col items-center phone:w-[80%]">
+            <div className="insideCard w-[60%] h-full flex gap-2 justify-center flex-col items-center max-md:w-[80%]">
               <p className="text-lg">{data.value}</p>
               <p>{data.figure}</p>
             </div>
