@@ -42,7 +42,7 @@ const Setting: React.FC = () => {
   const getPaymentGateways = async () => {
     try {
       const response = await axios.get(
-        "https://sk-yzt3.onrender.com/api/admin/getPost",
+        `${import.meta.env.VITE_DEVE_URL}/api/admin/getPost`,
         { headers }
       );
       dispatch(setPaymentGateways(response.data.data));
@@ -105,7 +105,7 @@ const Setting: React.FC = () => {
       if (qrCodeFile) formData.append("image", qrCodeFile);
 
       const response = await axios.post(
-        "https://sk-yzt3.onrender.com/api/admin/postWay",
+        `${import.meta.env.VITE_DEVE_URL}/api/admin/postWay`,
         formData,
         { headers }
       );
@@ -123,7 +123,7 @@ const Setting: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://sk-yzt3.onrender.com/api/admin/roles",
+        `${import.meta.env.VITE_DEVE_URL}/api/admin/roles`,
         { adminRole },
         { headers }
       );
@@ -147,7 +147,7 @@ const Setting: React.FC = () => {
     const toastLoadingId = toast.loading("Please wait while deleting ");
     try {
       await axios.delete(
-        `https://sk-yzt3.onrender.com/api/admin/deletePost/${deleteId}`,
+        `${import.meta.env.VITE_DEVE_URL}/api/admin/deletePost/${deleteId}`,
         { headers }
       );
       dispatch(

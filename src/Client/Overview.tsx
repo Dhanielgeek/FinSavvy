@@ -43,7 +43,7 @@ const Overview = () => {
     {
       id: 5,
       Amount: `${user.investmentPlan}`,
-      Title: "Investmnet Plan",
+      Title: "Investment Plan",
       bg: "bg-red-500",
       icon: <GiPayMoney />,
     },

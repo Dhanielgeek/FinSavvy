@@ -25,6 +25,13 @@ const Login: React.FC = () => {
       dispatch(Userdata(response.data.data));
       dispatch(userToken(response.data.token));
       toast.success("Login successful!", { duration: 4000 });
+      setTimeout(() => {
+        if (response.data.data.isAdmin) {
+          Navigate("/welcome", { replace: true });
+        } else {
+          Navigate("/user/overview", { replace: true });
+        }
+      });
       Navigate("/user/overview", { replace: true });
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {

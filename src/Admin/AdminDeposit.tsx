@@ -38,7 +38,7 @@ const AdminDeposit = () => {
   };
 
   const getAllTransactions = async () => {
-    const url = "https://sk-yzt3.onrender.com/api/admin/allTransactions";
+    const url = `${import.meta.env.VITE_DEVE_URL}/api/admin/allTransactions`;
     try {
       const response = await axios.get(url, {
         headers: { Authorization: `Bearer ${userToken}` },
@@ -55,10 +55,13 @@ const AdminDeposit = () => {
 
   useEffect(() => {
     getAllTransactions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, userToken]);
 
   const confirmDeposit = async (transactionId: string) => {
-    const confirmUrl = `https://sk-yzt3.onrender.com/api/admin/approveDeposit/${transactionId}`;
+    const confirmUrl = `${
+      import.meta.env.VITE_DEVE_URL
+    }/api/admin/approveDeposit/${transactionId}`;
     try {
       await axios.put(
         confirmUrl,
@@ -78,7 +81,9 @@ const AdminDeposit = () => {
   };
 
   const handleDecline = async (transactionId: string) => {
-    const declineUrl = `https://sk-yzt3.onrender.com/api/admin/declineDeposit/${transactionId}`;
+    const declineUrl = `${
+      import.meta.env.VITE_DEVE_URL
+    }/api/admin/declineDeposit/${transactionId}`;
     try {
       await axios.put(
         declineUrl,
@@ -136,13 +141,13 @@ const AdminDeposit = () => {
       </div>
       <div className="w-full h-1/6 flex justify-between px-5 items-center phone:flex-col phone:h-1/4">
         <div className="w-[40%] h-full flex justify-around items-center phone:w-full">
-          <button className="w-[30%] h-1/2 text-white font-semibold bg-green-500 rounded-md">
+          <button className="py-1 px-6 text-white font-semibold bg-green-500 rounded-md">
             Copy
           </button>
-          <button className="w-[30%] h-1/2 text-white font-semibold bg-red-500 rounded-md">
+          <button className="py-1 px-6 text-white font-semibold bg-red-500 rounded-md">
             CSV
           </button>
-          <button className="w-[30%] h-1/2 text-white font-semibold bg-blue-500 rounded-md">
+          <button className="py-1 px-6 text-white font-semibold bg-blue-500 rounded-md">
             Print
           </button>
         </div>

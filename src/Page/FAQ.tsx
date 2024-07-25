@@ -28,7 +28,7 @@ const FAQ = () => {
     {
       question: "How can I contact customer support?",
       answer:
-        "You can contact our customer support team via email at support@defi-skyspace.com or through our live chat feature available on our website.",
+        "You can contact our customer support team via email at support@fintrading.com or through our live chat feature available on our website.",
     },
   ];
 

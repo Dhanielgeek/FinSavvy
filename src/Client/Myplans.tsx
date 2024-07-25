@@ -25,7 +25,9 @@ const Myplans: React.FC = () => {
     try {
       toast.loading("Fetching your investment plans...");
       const response = await axios.get(
-        `https://sk-smoky.vercel.app/api/user/getAllInvestmentPlans/${userId}`,
+        `${
+          import.meta.env.VITE_DEVE_URL
+        }/api/user/getAllInvestmentPlans/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${userToken}`,

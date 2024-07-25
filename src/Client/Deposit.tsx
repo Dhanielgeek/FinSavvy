@@ -30,7 +30,9 @@ const Deposit = () => {
     const headers = {
       Authorization: `Bearer ${userToken}`,
     };
-    const apiUrl = `https://sk-smoky.vercel.app/api/user/getPostByName/${type}`;
+    const apiUrl = `${
+      import.meta.env.VITE_DEVE_URL
+    }/api/user/getPostByName/${type}`;
 
     try {
       const response = await axios.get(apiUrl, { headers });
@@ -108,7 +110,7 @@ const Deposit = () => {
     const toastLoadingId = toast.loading("Deposit Processing...");
     try {
       const response = await axios.post(
-        "https://sk-yzt3.onrender.com/api/user/deposit",
+        `${import.meta.env.VITE_DEVE_URL}/api/user/deposit`,
         formData,
         {
           headers: {
