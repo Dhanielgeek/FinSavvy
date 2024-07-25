@@ -12,6 +12,15 @@ import Withdraw from "../Client/Withdraw";
 import Myplans from "../Client/Myplans";
 import Packages from "../Client/Packages";
 import Deposit from "../Client/Deposit";
+import WelcomeAdmin from "../Admin/WelcomeAdmin";
+import Admin from "../Admin/Admin";
+import AllUsers from "../Admin/Allusers";
+import InvestmentPack from "../Admin/InvestmentPack";
+import UserDetails from "../Admin/UserDetails";
+import Setting from "../Admin/Setting";
+import AdminDeposit from "../Admin/AdminDeposit";
+import AdminHome from "../Admin/AdminHome";
+import AdminWithdraw from "../Admin/AdminWithdraw";
 
 export const MainRoutes = createBrowserRouter([
   {
@@ -67,6 +76,44 @@ export const MainRoutes = createBrowserRouter([
       {
         path: "deposit",
         element: <Deposit />,
+      },
+    ],
+  },
+  {
+    path: "welcome",
+    element: <WelcomeAdmin />,
+  },
+  {
+    path: "admin",
+    element: <Admin />,
+    children: [
+      {
+        path: "adminhome",
+        element: <AdminHome />,
+      },
+      {
+        path: "allusers",
+        element: <AllUsers />,
+      },
+      {
+        path: "admindeposit",
+        element: <AdminDeposit />,
+      },
+      {
+        path: "adminwithdraw",
+        element: <AdminWithdraw />,
+      },
+      {
+        path: "packs",
+        element: <InvestmentPack />,
+      },
+      {
+        path: "userdetails/:_id",
+        element: <UserDetails />,
+      },
+      {
+        path: "settings",
+        element: <Setting />,
       },
     ],
   },
