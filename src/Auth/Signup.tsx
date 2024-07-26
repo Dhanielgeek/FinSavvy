@@ -19,10 +19,11 @@ const SignUp: React.FC = () => {
   const [country, setCountry] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [termsAccepted, setTermsAccepted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [countries, setCountries] = useState<Country[]>([]);
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -50,6 +51,7 @@ const SignUp: React.FC = () => {
     country,
     password,
     confirmPassword,
+    termsAccepted,
   };
 
   const passwordRegex =
@@ -69,9 +71,12 @@ const SignUp: React.FC = () => {
       !phoneNumber ||
       !country ||
       !password ||
-      !confirmPassword
+      !confirmPassword ||
+      !termsAccepted
     ) {
-      toast.error("Please input all fields");
+      toast.error(
+        "Please input all fields and accept the terms and conditions"
+      );
     } else if (confirmPassword !== password) {
       toast.error("Passwords do not match");
     } else if (!isValidPassword) {
@@ -89,10 +94,15 @@ const SignUp: React.FC = () => {
         setCountry("");
         setPassword("");
         setConfirmPassword("");
-        Navigate("/review");
-      } catch (error) {
-        console.error(error);
-        toast.error("An error occurred during signup");
+        setTermsAccepted(false);
+        navigate("/review");
+      } catch (error: any) {
+        if (axios.isAxiosError(error)) {
+          const errorMsg = error.response?.data?.error || "An error occurred";
+          toast.error(errorMsg);
+        } else {
+          toast.error("An unknown error occurred");
+        }
       } finally {
         setLoading(false);
         toast.dismiss(toastLoading);
@@ -108,7 +118,7 @@ const SignUp: React.FC = () => {
             className="h-20 w-auto"
             src={Logo}
             alt="Logo"
-            onClick={() => Navigate("/")}
+            onClick={() => navigate("/")}
           />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Create Account
@@ -257,6 +267,8 @@ const SignUp: React.FC = () => {
               name="terms"
               type="checkbox"
               className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              checked={termsAccepted}
+              onChange={(e) => setTermsAccepted(e.target.checked)}
             />
             <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
               I agree with the{" "}
