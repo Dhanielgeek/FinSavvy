@@ -33,13 +33,12 @@ const Login: React.FC = () => {
         }
       });
       Navigate("/user/overview", { replace: true });
-    } catch (error: unknown) {
+    } catch (error: any) {
       if (axios.isAxiosError(error)) {
-        const errorMsg =
-          error.response?.data?.message || "An unexpected error occurred";
+        const errorMsg = error.response?.data?.error || "An error occurred";
         toast.error(errorMsg, { duration: 3000 });
       } else {
-        toast.error("Error occurred");
+        toast.error("An unknown error occurred");
       }
     } finally {
       setLoading(false);
