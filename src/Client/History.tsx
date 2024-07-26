@@ -65,7 +65,7 @@ const History: React.FC = () => {
             className={
               value === "approved"
                 ? "bg-green-500 text-white px-2 py-1 rounded"
-                : value === "declined"
+                : value === "rejected"
                 ? "bg-red-500 text-white px-2 py-1 rounded"
                 : "bg-yellow-500 text-white px-2 py-1 rounded"
             }
