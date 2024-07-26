@@ -91,7 +91,7 @@ const Packages: React.FC = () => {
     const loadingToast = toast.loading("Joining plan...");
     try {
       const response = await axios.post(
-        `https://sk-smoky.vercel.app/api/user/invest/${userId}`,
+        `${import.meta.env.VITE_DEVE_URL}/api/user/invest/${userId}`,
         {
           planName: plan.name,
           amount,

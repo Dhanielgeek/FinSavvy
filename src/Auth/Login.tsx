@@ -35,7 +35,7 @@ const Login: React.FC = () => {
       Navigate("/user/overview", { replace: true });
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
-        const errorMsg = error.response?.data?.error || "An error occurred";
+        const errorMsg = error.response?.data?.message || "An error occurred";
         toast.error(errorMsg, { duration: 3000 });
       } else {
         toast.error("An unknown error occurred");
