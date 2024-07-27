@@ -39,7 +39,7 @@ const Sidebar: React.FC<SidebarProps> = ({ active, setActive }) => {
   };
 
   return (
-    <aside className={`sidebar ${active ? "active" : ""}`}>
+    <aside className={`sidebar z-30 ${active ? "active" : ""}`}>
       <div className="close_icon" onClick={() => setActive(!active)}>
         <MdOutlineClear />
       </div>

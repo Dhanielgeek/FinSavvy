@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [active, setActive] = useState(false);
 
   return (
-    <div className="h-screen w-screen max-w-[100vw] max-h-[100dvh] overflow-hidden flex">
+    <div className="h-screen w-screen max-w-[100vw] max-h-[100vh] overflow-hidden flex">
       <Sidebar active={active} setActive={setActive} />
       <div className=" w-full h-full bg-[#101829]">
         <UserHeader active={active} setActive={setActive} />

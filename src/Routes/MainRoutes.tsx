@@ -27,6 +27,7 @@ import Profile from "../Client/Account/Profile";
 import Security from "../Client/Account/Security";
 import AdminPri from "./AdminPri";
 import UserPri from "./UserPri";
+import Support from "../Client/Support";
 
 export const MainRoutes = createBrowserRouter([
   {
@@ -89,6 +90,10 @@ export const MainRoutes = createBrowserRouter([
           {
             path: "history",
             element: <History />,
+          },
+          {
+            path: "support",
+            element: <Support />,
           },
           {
             path: "account",
