@@ -181,7 +181,7 @@ const Deposit = () => {
               </p>
             </div>
             <div className="AddressHolder w-[80%] h-[40%] flex justify-around items-center flex-col">
-              <div className="Address w-[96%] h-[15%] rounded-md gap-2 bg-gray-300 flex justify-center items-center">
+              <div className="Address px-3 py-2 rounded-md gap-2 bg-gray-300 flex justify-center items-center">
                 <p className="walletAddress font-semibold text-gray-600">
                   {transactionDetails?.walletAddress}
                 </p>
@@ -192,14 +192,14 @@ const Deposit = () => {
                   }
                 />
               </div>
-              <div className="w-[40%] h-[60%] flex justify-center items-center">
+              <div className="w-[40%] h-[60%]  flex justify-center items-center max-md:w-[70%]">
                 {transactionDetails &&
                   transactionDetails.qrCode &&
                   typeof transactionDetails.qrCode === "string" && (
                     <img
                       src={transactionDetails.qrCode}
                       alt=""
-                      className="w-[100%] h-[100%] object-cover"
+                      className=" px-11 py-2 object-cover"
                     />
                   )}
                 {transactionDetails &&
