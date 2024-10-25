@@ -8,6 +8,7 @@ import CreditDebitModal from "./CreditDebitModal";
 import ConfirmSuspendModal from "../Components/ConfirmSuspendModal";
 import ConfirmUnsuspendModal from "../Components/ConfirmUnsuspendedModal";
 import ConfirmDeleteModal from "../Components/ConfirmDeleteModal";
+import toast from "react-hot-toast";
 
 interface RootState {
   user: {
@@ -29,6 +30,8 @@ const UserDetails = () => {
   const { _id } = useParams<{ _id: string }>();
 
   const verifyUser = async () => {
+    const toastloading = toast.loading("Please wait...");
+
     const verifyUrl = `${
       import.meta.env.VITE_DEVE_URL
     }/api/admin/verifyUser/${_id}`;
@@ -39,9 +42,13 @@ const UserDetails = () => {
     try {
       await axios.put(verifyUrl, {}, { headers });
       // Update the local state after verification
+      toast.success("User Verified Successfully");
       dispatch(setOneUser({ ...oneUser, isVerified: true }));
     } catch (error) {
       console.error("Error verifying user:", error);
+      toast.error("Failed to verify user. Please try again.");
+    } finally {
+      toast.dismiss(toastloading);
     }
   };
 
