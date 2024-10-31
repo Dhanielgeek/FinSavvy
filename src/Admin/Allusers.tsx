@@ -135,11 +135,11 @@ const AllUsers: React.FC = () => {
         <p className="text-2xl">DefiskySpace users list</p>
       </div>
       <div className="UserAction w-full h-20 flex justify-between items-center px-10">
-        <button className="w-[12%] h-1/2 text-white rounded-md bg-green-400 phone:w-[30%]">
+        <button className="w-[12%] h-1/2 text-white rounded-md bg-green-400 max-md:w-[30%]">
           Message All
         </button>
         <button
-          className="w-[10%] h-1/2 bg-red-500 rounded-md flex justify-center gap-1 items-center text-white phone:w-[30%]"
+          className="w-[10%] h-1/2 bg-red-500 rounded-md flex justify-center gap-1 items-center text-white max-md:w-[40%]"
           onClick={showModal}
         >
           <IoAddCircleOutline /> Add User
@@ -147,11 +147,11 @@ const AllUsers: React.FC = () => {
       </div>
       <div className="w-full h-4/5 flex justify-center items-center">
         <div className="w-11/12 h-full bg-white shadow-lg">
-          <div className="w-[50%] h-[15%] flex justify-between px-5 items-center phone:w-[100%] phone:gap-2">
+          <div className="w-[50%] h-[15%] flex justify-between px-5 items-center max-md:w-[100%] phone:gap-2">
             <select
               name=""
               id=""
-              className="w-[30%] h-3/5 rounded-md border px-3 phone:w-[40%]"
+              className="w-[30%] h-3/5 rounded-md border px-3 max-md:w-[40%]"
             >
               <option value="">Ascending</option>
               <option value="">Descending</option>
@@ -164,7 +164,7 @@ const AllUsers: React.FC = () => {
               />
             </div>
           </div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto max-md:h-[90rem]">
             <table {...getTableProps()} className="w-full border-collapse">
               <thead>
                 {headerGroups.map((headerGroup) => (
