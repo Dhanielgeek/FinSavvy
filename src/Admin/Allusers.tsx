@@ -164,7 +164,7 @@ const AllUsers: React.FC = () => {
               />
             </div>
           </div>
-          <div className="overflow-x-auto max-md:h-[90rem]">
+          <div className="overflow-x-auto max-md:h-[90rem] h-[60rem]">
             <table {...getTableProps()} className="w-full border-collapse">
               <thead>
                 {headerGroups.map((headerGroup) => (
