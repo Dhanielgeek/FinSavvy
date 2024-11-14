@@ -85,6 +85,7 @@ const UserDetails = () => {
   };
 
   const deleteUser = async () => {
+    const toastloading = toast.loading("Please wait...");
     const deleteUrl = `${
       import.meta.env.VITE_DEVE_URL
     }/api/admin/deleteOneUser/${_id}`;
@@ -94,10 +95,16 @@ const UserDetails = () => {
 
     try {
       await axios.delete(deleteUrl, { headers });
+      toast.success("User Verified Successfully");
       navigate(-1); // Navigate back to the previous page after deletion
       console.log("User deleted successfully");
-    } catch (error) {
-      console.error("Error deleting user:", error);
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        const errorMsg = error.response?.data?.message || "An error occurred";
+        toast.error(errorMsg, { duration: 3000 });
+      }
+    } finally {
+      toast.dismiss(toastloading);
     }
   };
 
