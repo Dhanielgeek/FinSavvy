@@ -16,12 +16,13 @@ const SignUp: React.FC = () => {
   const [userName, setUserName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [country, setCountry] = useState<string>("");
+  // const [country, setCountry] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [termsAccepted, setTermsAccepted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [countries, setCountries] = useState<Country[]>([]);
+  console.log(countries);
 
   const navigate = useNavigate();
 
@@ -48,7 +49,7 @@ const SignUp: React.FC = () => {
     userName,
     email,
     phoneNumber,
-    country,
+    // country,
     password,
     confirmPassword,
     termsAccepted,
@@ -69,7 +70,7 @@ const SignUp: React.FC = () => {
       !lastName ||
       !email ||
       !phoneNumber ||
-      !country ||
+      // !country ||
       !password ||
       !confirmPassword ||
       !termsAccepted
@@ -91,7 +92,7 @@ const SignUp: React.FC = () => {
         setUserName("");
         setEmail("");
         setPhoneNumber("");
-        setCountry("");
+        // setCountry("");
         setPassword("");
         setConfirmPassword("");
         setTermsAccepted(false);
@@ -205,28 +206,7 @@ const SignUp: React.FC = () => {
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
-            <div>
-              <label htmlFor="country" className="sr-only">
-                Country
-              </label>
-              <select
-                id="country"
-                name="country"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-              >
-                <option value="" disabled>
-                  Select your country
-                </option>
-                {countries.map((country) => (
-                  <option key={country.name.common} value={country.name.common}>
-                    {country.name.common}
-                  </option>
-                ))}
-              </select>
-            </div>
+
             <div>
               <label htmlFor="password" className="sr-only">
                 Password
